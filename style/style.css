@@ -1,0 +1,290 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+html,
+body {
+  font-size: 14px;
+  background-color: #222529;
+  font-weight: 400;
+}
+
+#form * {
+  outline: none;
+}
+
+.form-body {
+  max-width: 550px;
+  margin: 0 auto;
+  color: white;
+  padding: 30px 0;
+}
+
+.form-body .form-header {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin: 0 0 1.6rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form-body .form-item {
+  margin-bottom: 1.2rem;
+}
+
+.form-body .form-label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+
+.form-body .form-input {
+  height: 50px;
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: .25rem;
+  border: none;
+  -webkit-transition: -webkit-box-shadow .5s ease;
+  transition: -webkit-box-shadow .5s ease;
+  transition: box-shadow .5s ease;
+  transition: box-shadow .5s ease, -webkit-box-shadow .5s ease;
+}
+
+.form-body .form-input:active {
+  border: 2px solid black;
+}
+
+.form-body .form-input:focus {
+  -webkit-box-shadow: 0 0 1rem #7a956b;
+          box-shadow: 0 0 1rem #7a956b;
+  border: 2px solid #7a956b;
+}
+
+.form-body textarea.form-input {
+  min-height: 120px;
+  resize: vertical;
+  padding: 1.3rem;
+}
+
+.form-body .options .options-item {
+  margin-bottom: .5rem;
+}
+
+.form-body .options .options-item:nth-last-child() {
+  margin: 0;
+}
+
+.form-body .options .options-input {
+  display: none;
+}
+
+.form-body .options .options-input:checked + .options-label::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.form-body .options .options-label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  line-height: 140%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.form-body .options .options-label:before {
+  content: "";
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 24px;
+          flex: 0 0 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-right: 10px;
+}
+
+.form-body .options .options-label::after {
+  content: "";
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-color: slateblue;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.form-body .file .file-item {
+  position: relative;
+}
+
+.form-body .file .file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.form-body .file .file-input:hover + .file-button {
+  background-color: #4b39bb;
+}
+
+.form-body .file .file-button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  min-height: 2.5rem;
+  width: 100%;
+  border-radius: 1.3rem;
+  padding: 0 1.25rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: slateblue;
+  border: none;
+  color: white;
+  -webkit-box-shadow: 0 0.15rem 0 0 #2c216d;
+          box-shadow: 0 0.15rem 0 0 #2c216d;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+.form-body .file .file-preview {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  min-width: 100px;
+  padding-top: 1rem;
+}
+
+.form-body .file .file-preview img {
+  max-width: 100%;
+}
+
+.form-body .checkbox .checkbox-input {
+  display: none;
+}
+
+.form-body .checkbox .checkbox-input:checked + .checkbox-label:after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.form-body .checkbox .checkbox-label {
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 140%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.form-body .checkbox .checkbox-label a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+.form-body .checkbox .checkbox-label::before {
+  content: "";
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 24px;
+          flex: 0 0 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+}
+
+.form-body .checkbox .checkbox-label::after {
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+  content: "";
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: .2rem;
+  background-color: slateblue;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.form-body .form-button {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  min-height: 3rem;
+  background-color: #7a956b;
+  border: none;
+  border-radius: 1.25rem;
+  font-weight: 700;
+  color: white;
+  -webkit-box-shadow: 0 0.25rem 0 0 #313c2b;
+          box-shadow: 0 0.25rem 0 0 #313c2b;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  position: relative;
+  top: 0;
+}
+
+.form-body .form-button:hover {
+  background-color: #627756;
+}
+
+.form-body .form-button:active {
+  top: .25rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}

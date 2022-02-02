@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style/style.css">
+   <title>From</title>
+</head>
+
+<body>
+   <main class="wrapper">
+      <form action="#" id="form" class="form-body">
+         <h1 class="form-header">Data sending</h1>
+         <section class="form-item">
+            <label for="formName" class="form-label">Name*:</label>
+            <input id="formName" type="text" name="name" class="form-input">
+         </section>
+         <section class="form-item">
+            <label for="formNickname" class="form-label">Nickname*:</label>
+            <input id="formNickname" type="text" name="nickname" class="form-input">
+         </section>
+         <section class="form-item">
+            <label for="formEmail" class="form-label">Email*:</label>
+            <input id="formEmail" type="email" name="email" class="form-input">
+         </section>
+         <section class="form-item">
+            <p class="form-label">Sex:</p>
+            <div class="options">
+               <div class="options-item">
+                  <input id="formSexMale" value="male" type="radio" name="sex" class="options-input">
+                  <label for="formSexMale" class="options-label"><span>Male</span></label>
+               </div>
+               <div class="options-item">
+                  <input id="formSexFemale" value="female" type="radio" name="sex" class="options-input">
+                  <label for="formSexFemale" class="options-label"><span>Female</span></label>
+               </div>
+            </div>
+         </section>
+         <section class="form-item">
+            <label for="formMessage" class="form-label">Send message</label>
+            <textarea name="message" id="formMessage" class="form-input"></textarea>
+         </section>
+         <section class="form-item">
+            <p class="form-label">Age:</p>
+            <select name="age" id="select-age">
+               <option value="0-17">0-17</option>
+               <option value="18-25" selected>18-25</option>
+               <option value="25-39">25-39</option>
+               <option value="40+">40+</option>
+            </select>
+         </section>
+         <section class="form-item">
+            <p class="form-label">Add image</p>
+            <div class="file">
+               <div class="file-item">
+                  <input id="formImage" accept=".jpg, .png, .gif" type="file" name="image" class="file-input">
+                  <button class="file-button">Select</button>
+                  <div class="file-preview"></div>
+               </div>
+            </div>
+         </section>
+         <section class="form-item">
+            <div class="checkbox">
+               <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox-input">
+               <label for="formAgreement" class="checkbox-label"><span> I agree with the <a href="#">Terms of the
+                        personal
+                        data
+                        processing Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil,
+                        provident?</a>*</span></label>
+
+            </div>
+         </section>
+         <button type="" class="form-button">Send</button>
+      </form>
+   </main>
+
+</body>
+
+</html>
