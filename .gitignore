@@ -1,1 +1,6 @@
-scss/*
+scss
+node_modules
+package-lock.json
+nodemailer.js
+uploads/**
+.DS_Store

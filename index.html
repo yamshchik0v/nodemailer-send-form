@@ -6,24 +6,24 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style/style.css">
-   <title>From</title>
+   <title>Form Sending</title>
 </head>
 
 <body>
    <main class="wrapper">
-      <form action="#" id="form" class="form-body">
+      <form id="form" class="form-body" enctype="multipart/form-data">
          <h1 class="form-header">Data sending</h1>
          <section class="form-item">
-            <label for="formName" class="form-label">Name*:</label>
-            <input id="formName" type="text" name="name" class="form-input">
+            <label for="name" class="form-label" >Name<i class="_req-star">*</i> :</label>
+            <input id="formName" type="text" name="name" class="form-input _required" placeholder="name">
          </section>
          <section class="form-item">
-            <label for="formNickname" class="form-label">Nickname*:</label>
-            <input id="formNickname" type="text" name="nickname" class="form-input">
+            <label for="formNickname" class="form-label" >Nickname<i class="_req-star">*</i> :</label>
+            <input id="formNickname" type="text" name="nickname" class="form-input _required" placeholder="nickname">
          </section>
          <section class="form-item">
-            <label for="formEmail" class="form-label">Email*:</label>
-            <input id="formEmail" type="email" name="email" class="form-input">
+            <label for="formEmail" class="form-label">Email<i class="_req-star">*</i> :</label>
+            <input id="formEmail" type="email" name="email" class="form-input _required _email" placeholder="email">
          </section>
          <section class="form-item">
             <p class="form-label">Sex:</p>
@@ -39,7 +39,7 @@
             </div>
          </section>
          <section class="form-item">
-            <label for="formMessage" class="form-label">Send message</label>
+            <label for="formMessage" class="form-label">Message here:</label>
             <textarea name="message" id="formMessage" class="form-input"></textarea>
          </section>
          <section class="form-item">
@@ -57,24 +57,22 @@
                <div class="file-item">
                   <input id="formImage" accept=".jpg, .png, .gif" type="file" name="image" class="file-input">
                   <button class="file-button">Select</button>
-                  <div class="file-preview"></div>
                </div>
+               <div id="imagePreviewElem" class="file-preview"></div>
             </div>
          </section>
          <section class="form-item">
             <div class="checkbox">
-               <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox-input">
-               <label for="formAgreement" class="checkbox-label"><span> I agree with the <a href="#">Terms of the
-                        personal
-                        data
-                        processing Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil,
-                        provident?</a>*</span></label>
+               <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox-input _required">
+               <label for="formAgreement" class="checkbox-label"><span> I agree with the <a href="#">Terms of the personal data and information processing</a><i class="_req-star">*</span></label>
 
             </div>
          </section>
          <button type="" class="form-button">Send</button>
       </form>
    </main>
+
+   <script src="script.js"></script>
 
 </body>
 
