@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Email from Nodemailer</title>
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+   </style>
+   <style type="text/css">
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding-top: 10px;
+  font-family: Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  width: 100%;
+  height: 1vh;
+  background-color: #fceaab;
+}
+.greetings {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  color: #897322;
+  margin-bottom: 15px;
+  position: relative;
+  margin: 0 auto;
+}
+main {
+  margin: 0 auto;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+  background: #fceaab;
+  border: 2px solid #ddcb89;
+}
+.greetings:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ddcb89;
+  bottom: -10%;
+  right: 0;
+}
+.username {
+  color: crimson;
+  font-size: 1.1em;
+
+}
+h3 {
+  font-size: .9em;
+  margin: 5px 0 10px 10px;
+  align-self: start;
+  color: #897322;
+  text-align: center;
+}
+
+.userdata {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #ddcb89;
+  padding: 10px 0 10px 30px;
+  font-size: 0.8em;
+}
+.userdata ul {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+.userdata li {
+  color: #897322;
+  margin: 3px 0;
+}
+.userdata li span.userfield {
+  color: green;
+}
+p {
+  display: block;
+  text-align: left;
+  margin: 3px 0 3px 20px;
+  color: #897322;
+  
+}
+
+.msg {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #ddcb89;
+  padding: 10px;
+  font-size: 0.9em;
+}
+.usermessage {
+  padding-left: 10px;
+}
+   </style>
+</head>
+<body>
+   <div>
+   <h1 class="greetings">Hello, <span class="username">{{userContext.name}}</span> </h1>
+     <h3>Here's your personal data:</h3>
+   <div class="userdata">
+     <ul>
+      <li>nickname: <span class="userfield">{{userContext.nick}}</span></li>
+      <li>email: <span class="userfield">{{userContext.email}}</span></li>
+      <li>sex: <span class="userfield">{{userContext.sex}}</span></li>
+      <li>age: <span class="userfield">{{userContext.age}}</span></li>
+   </ul>
+   </div>
+   <p>... and your message is:</p>
+   <div class="msg">
+     <span class="usermessage">
+     {{userContext.msg}}
+   </span>
+     </div>
+ </div>
+   
+</body>
+</html>

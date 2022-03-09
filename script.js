@@ -26,15 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
          })
-         let result = await response.json()
+
 
          if (response.ok) {
             form.classList.remove('_sending')
             form.reset()
             imagePreviewElem.innerHTML = '';
-            
-            console.log(formData)
-            console.log(result)
+            alert('check your email!')
             return
          }
          else {            
@@ -124,5 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('an error occurred while loading the image')
          })
          reader.readAsDataURL(image)
+         return image
       }
 })
