@@ -1,10 +1,11 @@
 {
   "name": "form",
+  "type": "module",
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "serve": "nodemon server.js",
-    "start": "node server.js"
+    "serve": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",

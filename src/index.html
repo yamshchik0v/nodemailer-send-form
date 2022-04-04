@@ -5,7 +5,8 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="style/style.css">
+   <link rel="stylesheet" type="text/css" href="style/style.css">
+   <script src="./scripts/script.js" type="module" defer></script>
    <title>Form Sending</title>
 </head>
 
@@ -18,12 +19,8 @@
             <input id="formName" type="text" name="name" class="form-input _required" placeholder="name">
          </section>
          <section class="form-item">
-            <label for="formNickname" class="form-label" >Nickname<i class="_req-star">*</i> :</label>
-            <input id="formNickname" type="text" name="nickname" class="form-input _required" placeholder="nickname">
-         </section>
-         <section class="form-item">
             <label for="formEmail" class="form-label">Email<i class="_req-star">*</i> :</label>
-            <input id="formEmail" type="email" name="email" class="form-input _required _email" placeholder="email">
+            <input id="formEmail" type="email" name="email" value= "xmank@yandex.ru" class="form-input _required _email" placeholder="email">
          </section>
          <section class="form-item">
             <p class="form-label">Sex:</p>
@@ -71,8 +68,6 @@
          <button type="" class="form-button">Send</button>
       </form>
    </main>
-
-   <script src="script.js"></script>
 
 </body>
 

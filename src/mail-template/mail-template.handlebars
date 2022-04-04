@@ -69,8 +69,6 @@ h3 {
 
 .userdata {
   display: block;
-  margin: 0 auto;
-  text-align: center;
   width: 100%;
   background-color: #fff;
   border: 2px solid #ddcb89;
@@ -112,20 +110,19 @@ p {
 </head>
 <body>
    <div>
-   <h1 class="greetings">Hello, <span class="username">{{userContext.name}}</span> </h1>
+   <h1 class="greetings">Hello, <span class="username">{{context.name}}</span> </h1>
      <h3>Here's your personal data:</h3>
    <div class="userdata">
      <ul>
-      <li>nickname: <span class="userfield">{{userContext.nick}}</span></li>
-      <li>email: <span class="userfield">{{userContext.email}}</span></li>
-      <li>sex: <span class="userfield">{{userContext.sex}}</span></li>
-      <li>age: <span class="userfield">{{userContext.age}}</span></li>
+      <li>email: <span class="userfield">{{context.email}}</span></li>
+      <li>sex: <span class="userfield">{{context.sex}}</span></li>
+      <li>age: <span class="userfield">{{context.age}}</span></li>
    </ul>
    </div>
-   <p>... and your message is:</p>
+   <p>Message:</p>
    <div class="msg">
      <span class="usermessage">
-     {{userContext.msg}}
+     {{context.msg}}
    </span>
      </div>
  </div>
