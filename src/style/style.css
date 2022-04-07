@@ -325,3 +325,97 @@ textarea.form-input {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+
+.modal-container {
+  position: fixed;
+  z-index: -10;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #222529e6;
+  opacity: 0;
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: .14s linear;
+  transition: .14s linear;
+}
+
+.modal-container .modal-window {
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+  width: clamp(300px, 30%, 1000px);
+  height: clamp(200px, 300px, 560px);
+  padding: 30px 40px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+}
+
+.modal-container .modal-window .modal-title {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  color: #222529;
+  font-size: 22px;
+  margin: 0;
+}
+
+.modal-container .modal-window .modal-title:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -40px;
+  right: -40px;
+  height: 1px;
+  background-color: grey;
+}
+
+.modal-container .modal-window .modal-message {
+  text-align: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1;
+          flex: 0 1;
+}
+
+.modal-container .modal-window .modal-button {
+  font-size: 16px;
+  background-color: #5d9240;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 25px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-box-shadow: 0 2px 7px 0 #91c375;
+          box-shadow: 0 2px 7px 0 #91c375;
+}
+
+.modal-container.modal-show {
+  z-index: 100;
+  opacity: 1;
+}
+
+.modal-container.modal-show .modal-window {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}

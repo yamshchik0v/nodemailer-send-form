@@ -1,7 +1,7 @@
 export const elementAddErrorClass = elem => {
    if (!elem) return false
-   elem.parentElement.classList.add(className)
-   elem.classList.add(className)
+   elem.parentElement.classList.add('_err')
+   elem.classList.add('_err')
    return true
 }
 

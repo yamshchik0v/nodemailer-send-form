@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import createTemplate from './createTemplate.js';
+import path from 'path'
 
 async function sendEmail(context) {
 
@@ -15,7 +16,7 @@ async function sendEmail(context) {
    });
 
    const info = {
-      from: 'sashayamschik0v@gmail.com',
+      from: 'mail@gmail.com',
       to: context.email,
       subject: 'You have filled out the form!',
       text: context.message,
@@ -34,12 +35,12 @@ async function sendEmail(context) {
    return await transporter.sendMail(info, err => {
       err
          ? console.error(err)
-         : console.log('Successfully sent!');
+         : console.log('Mail successfully sent!');
 
       fs.unlink(context.img.path, err => {
          err
             ? console.error(err)
-            : console.log('Deleted');
+            : console.log('Deleted attachment from ');
       })
    })
 

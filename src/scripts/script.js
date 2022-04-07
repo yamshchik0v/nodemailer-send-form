@@ -1,27 +1,61 @@
-import isFormValid from './helpers/isFormValid.js';
-import isEmailValid from './helpers/isEmailValid.js';
+import isFormValid from './form-helpers/isFormValid.js';
+import reqFieldsValidationEvent from './form-helpers/reqFieldsValidationEvent.js';
+import Modal from './modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
    const form = document.getElementById('form');
    const formImage = document.getElementById('formImage');
    const imagePreviewElem = document.getElementById('imagePreviewElem');
-   console.log(isFormValid(form, '._required'))
+   const requiredElements = form.querySelectorAll('._required')
+   const termsOfPersonalDataLink = document.getElementById('termsOfPD')
+   const termsModal = new Modal({
+      locationElem: document.body,
+      title: 'Terms of the personal data and information processing',
+      message: `'1. lalala 
+      2. blablabla
+      3. abasdfas'`,
+      buttonText: 'Ok ;)'
+   })
+   termsModal.render()
+   termsOfPersonalDataLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      termsModal.open()
+   })
+   const modalSuccess = new Modal({
+      locationElem: document.body,
+      title: 'Successfully sent!',
+      message: 'Your message has been successfully sent. Chek your Email',
+      buttonText: 'Ok ;)'
+   })
+   const modalServerError = new Modal({
+      locationElem: document.body,
+      title: 'Server error',
+      message: 'Server didn\'t response',
+      buttonText: 'Ok :('
+   })
+   const modalFormError = new Modal({
+      locationElem: document.body,
+      title: 'Form error',
+      message: 'Please, fill required fields',
+      buttonText: 'Ok :('
+   })
+   modalSuccess.render()
+   modalServerError.render()
+   modalFormError.render()
 
+   reqFieldsValidationEvent(requiredElements)
    form.addEventListener('submit', sendForm);
 
    async function sendForm(e) {
       e.preventDefault();
-      const hasFormErrs = howMuchErrsInForm(form) > 0;
+      const isFieldsOk = isFormValid(requiredElements)
       const formData = new FormData(form);
-
-
-      if (hasFormErrs) {
-         console.error('Errors in form!');
+      if (!isFieldsOk) {
+         modalFormError.open()
          return
       }
       else {
          form.classList.add('_sending')
-
          let response = await fetch('http://localhost:3000/index', {
             method: 'POST',
             body: formData
@@ -31,62 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
             form.classList.remove('_sending')
             form.reset()
             imagePreviewElem.innerHTML = '';
-            alert('check your email!')
-            // modal ()
+            modalSuccess.open()
             return
          }
          else {
             form.classList.remove('_sending')
-            alert('FAILED TO SEND');
-            // modal ()
+            modalError.open()
             return
          }
       }
    }
-
-   function howMuchErrsInForm(form) {
-      let errors = 0;
-      const formRequired = document.querySelectorAll('._required');
-
-      // === 
-      for (let i = 0; i < formRequired.length; i++) {
-         const requiredElement = formRequired[i];
-         elementRemoveErrorClass(requiredElement);
-
-         requiredElement.addEventListener('input', (e) => {
-
-            if (requiredElement.getAttribute('type') === 'checkbox' && requiredElement.checked) {
-               elementRemoveErrorClass(requiredElement)
-            }
-            else {
-               elementAddErrorClass(requiredElement)
-            }
-         })
-
-         if (requiredElement.classList.contains('_email')) {
-            if (validateEmail(requiredElement) === false) {
-               elementAddErrorClass(requiredElement);
-               errors++;
-            }
-
-         }
-         if (requiredElement.getAttribute('type') === 'checkbox' && requiredElement.checked === false) {
-            elementAddErrorClass(requiredElement);
-            errors++;
-         }
-
-         if (requiredElement.value === '') {
-            elementAddErrorClass(requiredElement);
-            errors++;
-         }
-
-
-
-
-      }
-      return errors
-   }
-
 
 
    formImage.addEventListener('change', () => {

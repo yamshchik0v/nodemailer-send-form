@@ -276,3 +276,72 @@ textarea.form-input {
     box-shadow: none;
   }
 }
+
+.modal-container {
+  position: fixed;
+  z-index: -10;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #222529e6;
+  opacity: 0;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  transition: .14s linear;
+  
+  .modal-window {
+    transform: translateY(-200px);
+    width: clamp(300px, 30%, 1000px);
+    height: clamp(200px, 300px, 560px);
+    padding: 30px 40px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.1s linear;
+
+    .modal-title {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      color: #222529;
+      font-size: 22px;
+      margin: 0;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: -40px;
+        right: -40px;
+        height: 1px;
+        background-color: grey;
+      }
+    }
+    .modal-message{
+      text-align: center;
+      flex: 0 1;
+    }
+
+    .modal-button{
+      font-size: 16px;
+      background-color: $green;
+      border-radius: 5px;
+      border: none;
+      padding: 10px 25px;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 7px 0 lighten($green, 20%);
+    }
+  }
+  &.modal-show {
+    z-index: 100;
+    opacity: 1;
+    .modal-window {
+      transform: translateY(0);
+    }
+  } 
+}
