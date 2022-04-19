@@ -15,9 +15,14 @@ body {
   font-size: 16px;
   background-color: $bg;
   font-weight: 400;
+  padding: 5px;
+  &.modal-show {
+    overflow-y: hidden;
+  }
 }
 
 .wrapper {
+  padding: 5px;
 }
 
 ._req-star {
@@ -155,16 +160,22 @@ textarea.form-input {
     height: 100%;
     opacity: 0;
     font-size: 0;
+    max-width: 100px;
     cursor: pointer;
-  }
+    
+    &:hover + .file-button {
+      background-color: darken($violet, 5%);
+    }
 
-  .file-input:hover + .file-button {
-    background-color: darken($violet, 5%);
+    &:hover + .file-button::after {
+      opacity: .7;
+    }
   }
 
   .file-button {
     display: inline-flex;
     min-height: 2.5rem;
+    min-width: 100px;
     padding: 0.5rem 4rem;
     border-radius: 1.3rem;
     padding: 0 1.25rem;
@@ -175,7 +186,23 @@ textarea.form-input {
     color: white;
     box-shadow: 0 0.15rem 0 0 darken($violet, 30%);
     transition: background-color 0.3s;
+    
+    &:after {
+      content: 'only .jpg .jpeg .png .gif files availible';
+      position: absolute;
+      left: 108px;
+      background-color: rgba(51, 51, 51, 1);
+      border: 1px solid white;
+      padding: .3rem .5rem;
+      border-radius: .5rem;
+      opacity: 0;
+      font-size: .75rem;
+      transition: opacity .3s;
+    }
   }
+  
+  
+  
 
   .file-preview {
     display: inline-block;
@@ -294,8 +321,7 @@ textarea.form-input {
   .modal-window {
     transform: translateY(-200px);
     width: clamp(300px, 30%, 1000px);
-    height: clamp(200px, 300px, 560px);
-    padding: 30px 40px 20px;
+    padding: 20px 30px;
     background-color: #fff;
     border-radius: 8px;
     display: flex;
@@ -310,13 +336,13 @@ textarea.form-input {
       width: 100%;
       color: #222529;
       font-size: 22px;
-      margin: 0;
+      margin: 0 0 30px;
       &:after {
         content: '';
         position: absolute;
         bottom: -10px;
-        left: -40px;
-        right: -40px;
+        left: -30px;
+        right: -30px;
         height: 1px;
         background-color: grey;
       }
@@ -333,8 +359,19 @@ textarea.form-input {
       border: none;
       padding: 10px 25px;
       color: #fff;
+      margin: 20px 0 0 0;
+      
       cursor: pointer;
       box-shadow: 0 2px 7px 0 lighten($green, 20%);
+      &.modal-form-err {
+        background-color: crimson;
+      }
+      &.modal-success {
+        color: seagreen
+      }
+      &.modal-terms {
+        background-color: royalblue;
+      }
     }
   }
   &.modal-show {

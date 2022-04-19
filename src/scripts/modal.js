@@ -1,9 +1,9 @@
 export default class Modal {
    constructor(props = { locationElem: document.body, title: 'no title', message: 'no message', button: 'just button' }) {
       this.locationElem = props.locationElem || document.body;
-      this.title = props.title || 'no title';
-      this.message = props.message || 'no message';
-      this.buttonText = props.buttonText || 'just button';
+      this.title = props.title;
+      this.message = props.message;
+      this.buttonText = props.buttonText;
       this.modalElem = document.createElement('section');
       this.modalElem.classList.add('modal-container');
    }

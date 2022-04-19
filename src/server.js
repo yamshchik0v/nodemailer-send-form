@@ -1,8 +1,10 @@
+import 'dotenv/config';
 import express from 'express';
-import path, { dirname } from 'path';
-import sendEmail from './serverScripts/sendEmail.js';
 import multer from 'multer';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import sendEmail from './serverScripts/sendEmail.js';
+import fileTypeValidation from './serverScripts/fileTypeValidation.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -15,13 +17,18 @@ const storage = multer.diskStorage({
    }
 });
 
-
 const upload = multer({
-   storage: storage
+   storage: storage,
+   limits: {
+      fileSize: 2 * 1024 * 1024,
+   },
+   fileFilter: (req, file, cb) => {
+      fileTypeValidation(file, cb)
+   }
 }).single('image');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ?? 3000;
 
 app.use(express.static(__dirname));
 app.use('/scripts', express.static(__dirname + '/scripts/helpers'));
@@ -38,7 +45,7 @@ app.post('/index', upload, (request, response) => {
       email: request.body.email,
       name: request.body.name,
       msg: request.body.message,
-      sex: request.body.sex || 'not specified',
+      sex: request.body.sex ?? 'not specified',
       age: request.body.age,
    }
 

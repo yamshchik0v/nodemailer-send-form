@@ -1,47 +1,20 @@
 import isFormValid from './form-helpers/isFormValid.js';
 import reqFieldsValidationEvent from './form-helpers/reqFieldsValidationEvent.js';
-import Modal from './modal.js';
+import projectModals from './modal/projectModals.js';
+import Modal from './modal/Modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
    const form = document.getElementById('form');
    const formImage = document.getElementById('formImage');
    const imagePreviewElem = document.getElementById('imagePreviewElem');
-   const requiredElements = form.querySelectorAll('._required')
-   const termsOfPersonalDataLink = document.getElementById('termsOfPD')
-   const termsModal = new Modal({
-      locationElem: document.body,
-      title: 'Terms of the personal data and information processing',
-      message: `'1. lalala 
-      2. blablabla
-      3. abasdfas'`,
-      buttonText: 'Ok ;)'
-   })
-   termsModal.render()
+   const requiredElements = form.querySelectorAll('._required');
+   const termsOfPersonalDataLink = document.getElementById('terms');
+
    termsOfPersonalDataLink.addEventListener('click', (e) => {
       e.preventDefault();
-      termsModal.open()
+      const modalTerms = new Modal(projectModals.modalTerms);
+      modalTerms.open();
    })
-   const modalSuccess = new Modal({
-      locationElem: document.body,
-      title: 'Successfully sent!',
-      message: 'Your message has been successfully sent. Chek your Email',
-      buttonText: 'Ok ;)'
-   })
-   const modalServerError = new Modal({
-      locationElem: document.body,
-      title: 'Server error',
-      message: 'Server didn\'t response',
-      buttonText: 'Ok :('
-   })
-   const modalFormError = new Modal({
-      locationElem: document.body,
-      title: 'Form error',
-      message: 'Please, fill required fields',
-      buttonText: 'Ok :('
-   })
-   modalSuccess.render()
-   modalServerError.render()
-   modalFormError.render()
 
    reqFieldsValidationEvent(requiredElements)
    form.addEventListener('submit', sendForm);
@@ -50,11 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const isFieldsOk = isFormValid(requiredElements)
       const formData = new FormData(form);
-      if (!isFieldsOk) {
-         modalFormError.open()
-         return
-      }
-      else {
+      if (isFieldsOk) {
          form.classList.add('_sending')
          let response = await fetch('http://localhost:3000/index', {
             method: 'POST',
@@ -65,14 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
             form.classList.remove('_sending')
             form.reset()
             imagePreviewElem.innerHTML = '';
-            modalSuccess.open()
+            const modalSuccess = new Modal(projectModals.modalSuccess);
+            modalSuccess.open();
             return
          }
          else {
             form.classList.remove('_sending')
-            modalError.open()
+            const modalServErr = new Modal(projectModals.modalServErr);
+            modalServErr.open();
             return
          }
+      }
+      else {
+         const modalFormErr = new Modal(projectModals.modalFormErr);
+         modalFormErr.open();
+         return
       }
    }
 
@@ -82,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
    })
 
    function uploadImage(image) {
-      if (!['image/jpeg', 'image/png', 'image.gif'].includes(image.type)) {
+      if (!['image/jpeg', 'image/png', 'image/gif', 'image/jpg'].includes(image.type)) {
          console.error('Please, add an image file. Only .png, .jpg, .gif extensions are enabled');
          formImage.value = '';
          return false;
@@ -98,7 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
          imagePreviewElem.innerHTML = `<img src="${e.target.result}" alt="Image">`
       })
       reader.addEventListener('error', () => {
-         console.error('an error occurred while loading the image')
+         const modalImage = new Modal(projectModals.modalImage);
+         modalImage.open();
       })
       reader.readAsDataURL(image)
       return image

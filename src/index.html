@@ -7,6 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" type="text/css" href="style/style.css">
    <script src="./scripts/script.js" type="module" defer></script>
+   <script src="./scripts/modal/Modal.js" type="module"></script>
    <title>Form Sending</title>
 </head>
 
@@ -20,7 +21,7 @@
          </section>
          <section class="form-item">
             <label for="formEmail" class="form-label">Email<i class="_req-star">*</i> :</label>
-            <input id="formEmail" type="email" name="email" value="xmank@yandex.ru" class="form-input _required _email" placeholder="email">
+            <input id="formEmail" type="email" name="email" class="form-input _required _email" placeholder="email">
          </section>
          <section class="form-item">
             <p class="form-label">Sex:</p>
@@ -61,7 +62,7 @@
          <section class="form-item">
             <div class="checkbox">
                <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox-input _required">
-               <label for="formAgreement" class="checkbox-label"><span> I agree with the <a href="#" id="termsOfPD">Terms of the personal data and information processing</a><i class="_req-star">*</span></label>
+               <label for="formAgreement" class="checkbox-label"><span> I agree with the <a href="#" id="terms">Terms of the personal data and information processing</a><i class="_req-star">*</span></label>
             </div>
          </section>
          <button type="" class="form-button">Send</button>

@@ -1,7 +1,7 @@
+import 'dotenv/config';
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import createTemplate from './createTemplate.js';
-import path from 'path'
 
 async function sendEmail(context) {
 
@@ -10,8 +10,8 @@ async function sendEmail(context) {
       port: 465,
       secure: true,
       auth: {
-         user: 'sashayamschik0v@gmail.com',
-         pass: 'Where4R3W3.'
+         user: process.env.EMAIL,
+         pass: process.env.PASS
       }
    });
 
@@ -36,12 +36,13 @@ async function sendEmail(context) {
       err
          ? console.error(err)
          : console.log('Mail successfully sent!');
-
-      fs.unlink(context.img.path, err => {
-         err
-            ? console.error(err)
-            : console.log('Deleted attachment from ');
-      })
+      if (info.attachments) {
+         fs.unlink(context.img.path, err => {
+            err
+               ? console.error(err)
+               : console.log('Deleted attachment from ');
+         })
+      }
    })
 
 }
