@@ -371,8 +371,8 @@ textarea.form-input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: .14s linear;
-  transition: .14s linear;
+  -webkit-transition: .14s all linear;
+  transition: .14s all linear;
 }
 
 .modal-container .modal-window {
@@ -442,14 +442,20 @@ textarea.form-input {
 
 .modal-container .modal-window .modal-button.modal-form-err {
   background-color: crimson;
+  -webkit-box-shadow: 0 2px 7px 0 #f16581;
+          box-shadow: 0 2px 7px 0 #f16581;
 }
 
 .modal-container .modal-window .modal-button.modal-success {
   color: seagreen;
+  -webkit-box-shadow: 0 2px 7px 0 #57c889;
+          box-shadow: 0 2px 7px 0 #57c889;
 }
 
 .modal-container .modal-window .modal-button.modal-terms {
   background-color: royalblue;
+  -webkit-box-shadow: 0 2px 7px 0 #99afef;
+          box-shadow: 0 2px 7px 0 #99afef;
 }
 
 .modal-container.modal-show {

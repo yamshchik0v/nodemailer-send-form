@@ -5,7 +5,6 @@ export default class Modal {
       this.destroyed = false;
       this.onClose = props.onClose || '';
    }
-   /* дописать метод onClose() и вызывать функцию при закрытии, передаваемую в onClose */
 
    createModal(props) {
       const modal = document.createElement('section');
@@ -32,13 +31,20 @@ export default class Modal {
       if (this.destroyed) {
          return console.error('Modal is destroyed')
       }
+      document.body.style.overflow = 'hidden';
       document.body.append(this.modal);
-      this.modal.classList.add('modal-show')
+      setTimeout(() => {
+         this.modal.classList.add('modal-show')
+      }, 140)
    }
 
    close() {
       this.modal.classList.remove('modal-show');
-      this.destroyModal()
+      document.body.style.overflow = 'auto';
+      setTimeout(() => {
+         this.destroyModal()
+      }, 140)
+
    }
 
    destroyModal() {

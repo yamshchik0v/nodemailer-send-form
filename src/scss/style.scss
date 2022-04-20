@@ -201,9 +201,6 @@ textarea.form-input {
     }
   }
   
-  
-  
-
   .file-preview {
     display: inline-block;
     max-width: 100px;
@@ -316,7 +313,7 @@ textarea.form-input {
   display: grid;
   justify-items: center;
   align-items: center;
-  transition: .14s linear;
+  transition: .14s all linear;
   
   .modal-window {
     transform: translateY(-200px);
@@ -365,12 +362,15 @@ textarea.form-input {
       box-shadow: 0 2px 7px 0 lighten($green, 20%);
       &.modal-form-err {
         background-color: crimson;
+        box-shadow: 0 2px 7px 0 lighten(crimson, 20%);
       }
       &.modal-success {
-        color: seagreen
+        color: seagreen;
+        box-shadow: 0 2px 7px 0 lighten(seagreen, 20%);
       }
       &.modal-terms {
         background-color: royalblue;
+        box-shadow: 0 2px 7px 0 lighten(royalblue, 20%);
       }
     }
   }
