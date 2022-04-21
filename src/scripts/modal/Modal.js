@@ -3,7 +3,6 @@ export default class Modal {
    constructor(props = { title, messageHTML, button: { styleType, text } }) {
       this.modal = this.createModal(props);
       this.destroyed = false;
-      this.onClose = props.onClose || '';
    }
 
    createModal(props) {
@@ -42,12 +41,12 @@ export default class Modal {
       this.modal.classList.remove('modal-show');
       document.body.style.overflow = 'auto';
       setTimeout(() => {
-         this.destroyModal()
+         this._destroyModal()
       }, 140)
 
    }
 
-   destroyModal() {
+   _destroyModal() {
       this.destroyed = true;
       this.modal.removeEventListener('click', this.handlers)
       this.modal.parentNode.removeChild(this.modal);

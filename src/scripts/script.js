@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
    const requiredElements = form.querySelectorAll('._required');
    const termsOfPersonalDataLink = document.getElementById('terms');
 
+   const modalTerms = new Modal(projectModals.modalTerms);
+   const modalServErr = new Modal(projectModals.modalServerErr);
+   const modalSuccess = new Modal(projectModals.modalSuccess);
+   const modalFormErr = new Modal(projectModals.modalFormErr);
+   const modalImage = new Modal(projectModals.modalImage);
+
    termsOfPersonalDataLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const modalTerms = new Modal(projectModals.modalTerms);
       modalTerms.open();
    })
 
@@ -21,32 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
    async function sendForm(e) {
       e.preventDefault();
+
       const isFieldsOk = isFormValid(requiredElements)
       const formData = new FormData(form);
+
       if (isFieldsOk) {
          form.classList.add('_sending')
          let response = await fetch('http://localhost:3000/index', {
             method: 'POST',
             body: formData
+         }).catch((err) => {
+            console.error(err)
+            modalServErr.open();
          })
 
          if (response.ok) {
             form.classList.remove('_sending')
             form.reset()
             imagePreviewElem.innerHTML = '';
-            const modalSuccess = new Modal(projectModals.modalSuccess);
             modalSuccess.open();
             return
          }
          else {
             form.classList.remove('_sending')
-            const modalServErr = new Modal(projectModals.modalServErr);
             modalServErr.open();
             return
          }
       }
       else {
-         const modalFormErr = new Modal(projectModals.modalFormErr);
          modalFormErr.open();
          return
       }
@@ -59,13 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
    function uploadImage(image) {
       if (!['image/jpeg', 'image/png', 'image/gif', 'image/jpg'].includes(image.type)) {
-         console.error('Please, add an image file. Only .png, .jpg, .gif extensions are enabled');
          formImage.value = '';
+         modalImage.open()
          return false;
       }
 
       if (image.size > 2 * 1024 * 1024) {
-         console.error('File must be lesser than 2MB');
+         modalImage.open()
          return false;
       }
 
@@ -74,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
          imagePreviewElem.innerHTML = `<img src="${e.target.result}" alt="Image">`
       })
       reader.addEventListener('error', () => {
-         const modalImage = new Modal(projectModals.modalImage);
          modalImage.open();
       })
       reader.readAsDataURL(image)

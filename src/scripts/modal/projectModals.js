@@ -58,6 +58,7 @@ export default {
       title: 'Image error',
       messageHTML: `
          <p>An error occurred while loading the image</p>
+         <p>(<2MB and only .jpg/.jpeg/.png/.gif)</p>
       `,
       button: {
          styleType: 'modal-form-err',

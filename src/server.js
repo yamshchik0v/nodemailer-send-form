@@ -41,21 +41,26 @@ app.post('/index', upload, (request, response) => {
 
    if (!request.body) return response.sendStatus(400);
 
-   const userContext = {
-      email: request.body.email,
-      name: request.body.name,
-      msg: request.body.message,
-      sex: request.body.sex ?? 'not specified',
-      age: request.body.age,
+   try {
+      const userContext = {
+         email: request.body.email,
+         name: request.body.name,
+         msg: request.body.message,
+         sex: request.body.sex ?? 'not specified',
+         age: request.body.age,
+      }
+
+      if (request.file) {
+         userContext.img = request.file;
+      }
+
+      response.send('Message sent')
+      sendEmail(userContext);
+
+   } catch (e) {
+      response.status(500).send(e)
    }
 
-   if (request.file) {
-      userContext.img = request.file;
-   }
-
-   sendEmail(userContext);
-   response.send(request.body)
 });
-
 
 app.listen(PORT, () => console.log(`server listening at http://localhost:${PORT}/index`));
